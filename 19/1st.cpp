@@ -8,7 +8,7 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-
+// 17/7/2022
 ////////////////////////////////////////// Quick Explanation //////////////////////////////////////////
 //This Solution was done using Two pointers pattern, first one to copmute the length of the linked list, then to calculate the length from the begginig untill the Nth
 //node, and re-point the first one to it, then link the Prev and Next nodes and delete it.
