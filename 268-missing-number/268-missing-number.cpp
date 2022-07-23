@@ -5,7 +5,10 @@ public:
         sort(nums.begin(), nums.end());
         if(nums[0] != 0) return 0;
         int i= 0;
-        while (i+1 < nums.size() && nums[i+1]-nums[i] == 1) i++;
-        return i+1;
+        for(int i=0; i<nums.size(); i++)
+        {
+            if(nums[i] != i) return i;
+        }
+        return nums.size();
     }
 };
