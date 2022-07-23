@@ -1,19 +1,11 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        bool found;
-        for(int i=0; i<nums.size(); i++)
-        {
-            if(nums[i] != i){
-                found= false;
-                int j= 0;
-                while(!found && j<nums.size()){
-                    if(i == nums[j]) found = true;
-                    else j++;
-                }
-                if(!found) return i;
-            }
-        }
-        return nums.size();
+        
+        sort(nums.begin(), nums.end());
+        if(nums[0] != 0) return 0;
+        int i= 0;
+        while (i+1 < nums.size() && nums[i+1]-nums[i] == 1) i++;
+        return i+1;
     }
 };
