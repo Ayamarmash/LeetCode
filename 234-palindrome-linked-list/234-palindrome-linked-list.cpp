@@ -23,12 +23,13 @@ public:
             Current= Current->next;
             Size++;
         }
-        while(newList->next !=NULL && head->next != NULL)
-        for(int i=0; i<Size; i++)
+        for(int i=0; i<Size/2; i++)
         {
             if(newList->val == head->val)
             {
                 Result= true;
+                ListNode* temp= newList;
+                ListNode* temp2= head;
                 head= head->next;
                 newList= newList->next;
             }
