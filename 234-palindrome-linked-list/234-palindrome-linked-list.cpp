@@ -14,17 +14,17 @@ public:
         bool Result= false;
         ListNode* newList= new ListNode();
         ListNode* Current= head;
-        //int Size= 0;
+        int Size= 0;
         while(Current != NULL)
         {
             ListNode* newNode= new ListNode(Current->val);
             newNode->next= newList;
             newList= newNode;
             Current= Current->next;
-            //Size++;
+            Size++;
         }
         while(newList->next !=NULL && head->next != NULL)
-        //for(int i=0; i<Size; i++)
+        for(int i=0; i<Size; i++)
         {
             if(newList->val == head->val)
             {
