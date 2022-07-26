@@ -1,15 +1,39 @@
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
-        int n=nums.size();
-        for(int i=0 ; i<n ; i++)
+
+        int i;
+        int missing= 1;
+        for( i=0; i<nums.size(); i++)
         {
-            while(nums[i]>0 and nums[i]<=n and nums[i]!=nums[nums[i]-1]) swap(nums[i],nums[nums[i]-1]);
+            if(nums[i] <= 0 || nums[i] > nums.size())
+            {
+                //cout <<nums[i] <<"  changed to  0" << endl;
+                nums[i]= 0;
+            }
         }
-        for(int i=0 ; i<n ; i++) if(nums[i] != i+1) return i+1;
-        return n+1;
-    }
-    
+        i= 0;
+        while(i < nums.size())
+        {
+            if(nums[i] != 0 && nums[i] != nums[nums[i]-1]) 
+            {
+                //cout << nums[i] << " swapped with  " << nums[nums[i]-1]<<endl;
+                Swap(nums, nums[i]- 1, i);
+            }       
+            else i++;
+        }
+
+        for(i= 0; i<nums.size(); i++)
+        {
+            cout << nums[i] << "  ,  " ;
+            if(nums[i] != 0 && nums[i] == missing)
+            { 
+                missing++;
+            }
+        }
+        //cout << endl;
+        return missing;
+}
     void Swap(vector<int>& nums, int x, int y)
     {
         int temp= nums[x];
