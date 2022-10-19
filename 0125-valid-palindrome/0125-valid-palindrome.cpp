@@ -5,10 +5,10 @@ public:
         int End=s.size()-1;
         while(Start < End)
         {
-            if(!isalnum(s[Start])) Start++;
-            else if(!isalnum(s[End])) End--;
+            while(!isalnum(s[Start]) && Start < End) Start++;
+            while(!isalnum(s[End]) && Start < End) End--;
             
-            else if(tolower(s[Start])!=tolower(s[End])) return false;
+            if(tolower(s[Start])!=tolower(s[End])) return false;
             else
             {
                 Start++;
