@@ -7,14 +7,19 @@ public:
         int max = 0;
         while(Start < End)
         {
-            int min;// min(height[Start], height[End]);
-            if(height[Start] < height[End]) min = height[Start];
-            else min = height [End];
-            
-            int area = min*(End-Start);
-            if(area > max) max = area;            
-            if(height[Start] > height[End]) End--;
-            else Start++;
+            if(height[Start] < height[End])
+            {
+                if(height[Start]*(End-Start) > max) max = height[Start]*(End-Start);
+                if(height[Start] > height[End]) End--;
+                else Start++;
+            }
+            else
+            {
+                if(height [End]*(End-Start) > max) max = height [End]*(End-Start);
+                if(height[Start] > height[End]) End--;
+                else Start++;
+            }
+
         }
         return max;
     }
