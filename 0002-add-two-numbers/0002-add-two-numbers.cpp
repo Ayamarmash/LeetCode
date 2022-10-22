@@ -52,7 +52,6 @@ public:
             Ptr1 = Ptr1->next;
             Ptr2 = Ptr2->next;
         }
-        
         while(Ptr1 != NULL) // to check if there is other numbers in l1
         {
             ListNode* tmp = new ListNode;
@@ -88,8 +87,7 @@ public:
             }
             Ptr1 = Ptr1->next;
         }
-   
-        while(Ptr2 != NULL) // to check if there is other numbers in l1
+        while(Ptr2 != NULL) // to check if there is other numbers in l2
         {
             ListNode* tmp = new ListNode;
             if(Ptr2->val + reminder < 10) 
@@ -124,8 +122,6 @@ public:
             }
             Ptr2 = Ptr2->next;
         }
-   
-        
         if(reminder != 0)
         {
             ListNode* rem = new ListNode;
