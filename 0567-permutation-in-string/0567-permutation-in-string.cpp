@@ -7,10 +7,9 @@ public:
         int i;
         int start = 0, end = pattern.length();
         if(pattern.length() > string.length()) return false;
-        for(i=0; i<pattern.length(); i++) {
-            ptrn[pattern[i]]++;
-            str[string[i]]++;
-        }
+        for(i=0; i<pattern.length(); i++) ptrn[pattern[i]]++;
+        for(i=0; i<pattern.length(); i++) str[string[i]]++;
+
         for(end; end<string.length(); end++){
             if(ptrn == str) return true;
             str[string[start]]--;
