@@ -1,39 +1,25 @@
 class Solution {
 public:
-    bool checkInclusion(string s1, string s2) 
+    bool checkInclusion(string pattern, string string) 
     {
-        int start = 0;
-        int end = 0;
-        unordered_map<char, int> ptrn;
-        unordered_map<char, int> string;
-        for(int i=0; i < s1.length(); i++) ptrn[s1[i]]++;
-        
-        while(end < s2.length())
-        {
-            unordered_map<char, int> tmp = ptrn;
-            if( end-start+1 == s1.length())
-            {
-                bool flag = true;
-                int i = start;
-                while( i <= end && flag)
-                {
-                    if(tmp[s2[i]] > 0)
-                    {
-                        tmp[s2[i]]--;
-                        flag = true;
-                        i++;
-                    }
-                    else flag = false;
-                }
-                if(flag) return true;
-                else 
-                {
-                    end++;
-                    start++;
-                }
-            }
-            else end++;
+        unordered_map <char, int> ptrn;
+        unordered_map <char, int> str;
+        int i;
+        int start = 0, end = pattern.length();
+        if(pattern.length() > string.length()) return false;
+        for(i=0; i<pattern.length(); i++) ptrn[pattern[i]]++;
+        for(i=0; i<pattern.length(); i++) str[string[i]]++;
+        cout << "Here 1" << endl;
+        for(end; end<string.length(); end++){
+            cout << "at " << end << endl;
+
+            if(ptrn == str) return true;
+            str[string[start]]--;
+            if(str[string[start]] == 0) str.erase(string[start]);
+            start++;
+            str[string[end]]++;
         }
+        if(ptrn == str) return true;
         return false;
     }
 };
