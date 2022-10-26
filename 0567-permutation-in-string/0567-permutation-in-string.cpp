@@ -9,10 +9,8 @@ public:
         if(pattern.length() > string.length()) return false;
         for(i=0; i<pattern.length(); i++) ptrn[pattern[i]]++;
         for(i=0; i<pattern.length(); i++) str[string[i]]++;
-        cout << "Here 1" << endl;
-        for(end; end<string.length(); end++){
-            cout << "at " << end << endl;
 
+        for(end; end<string.length(); end++){
             if(ptrn == str) return true;
             str[string[start]]--;
             if(str[string[start]] == 0) str.erase(string[start]);
