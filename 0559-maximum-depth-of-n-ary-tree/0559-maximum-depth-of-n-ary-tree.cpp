@@ -22,9 +22,8 @@ class Solution {
 public:
     int maxDepth(Node* root) {
         if(root == NULL) return 0;
-        vector<Node*> ch = root->children;
         int ans = 1;
-        for(int i=0; i < ch.size(); i++){
+        for(int i=0; i < (root->children).size(); i++){
             ans = max(ans, 1 + maxDepth(root->children[i]));
         }
         return ans;
