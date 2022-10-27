@@ -20,11 +20,10 @@ public:
             double size = q.size();
             double rowSum = 0;
             for(int i=0; i<size; i++){
-                TreeNode* temp = q.front();
-                if(temp->left != NULL) q.push(temp->left);
-                if(temp->right != NULL) q.push(temp->right);
+                if(q.front()->left != NULL) q.push(q.front()->left);
+                if(q.front()->right != NULL) q.push(q.front()->right);
+                rowSum += q.front()->val;
                 q.pop();
-                rowSum += temp->val;
             }
             answer.push_back(rowSum/size);
         }
