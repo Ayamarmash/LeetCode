@@ -7,8 +7,6 @@ public:
         int maxBars = 0;
         while(end < costs.size()){
             // cout << "Now at bar  " << costs[end] << "   And the boy have " << coins << endl;
-            // cout << "maxBars =  " << maxBars << endl;
-            // cout << "Boy have so far " << end-start+1 << endl << endl <<endl;
             //if the boy still have coins, and can buy the next bar
             if(coins >= costs[end]){
                 coins -= costs[end];
