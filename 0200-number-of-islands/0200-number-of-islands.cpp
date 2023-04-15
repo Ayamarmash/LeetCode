@@ -22,6 +22,7 @@ public:
             grid[y][x-1] = '2';
             checkPoint(x-1, y, grid);
         }
+        
 
         //checking right
         if(x+1 < grid[y].size() && grid[y][x+1] == '1'){
@@ -36,13 +37,12 @@ public:
             checkPoint(x, y-1, grid);
         }
         
-        
+    
         //checking down
         if(y+1 < grid.size() && grid[y+1][x] == '1'){
             grid[y+1][x] = '2';
             checkPoint(x, y+1, grid);
         }
-        
         
     }
 };
