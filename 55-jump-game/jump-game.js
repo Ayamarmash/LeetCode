@@ -16,5 +16,5 @@ var canJump = function (nums) {
         // if we moved nums[i] steps from the current index i, where we will reach ?
         if (i + nums[i] > maxReachableIndex) maxReachableIndex = i + nums[i];
     }
-    return false;
+    return true;
 };
