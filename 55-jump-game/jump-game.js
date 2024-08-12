@@ -1,20 +1,15 @@
-/**
- * @param {number[]} nums
- * @return {boolean}
- */
-var canJump = function (nums) {
-    if (nums.length === 1) return true;
+function canJump(nums) {
+    const n = nums.length;
+    const dp = new Array(n).fill(false);
+    dp[0] = true;
 
-    let maxReachableIndex = 0;
-    for (let i = 0; i < nums.length; i++) {
-
-        // if we are now beyond the max reachable index ( we can't reach it )
-        if (i > maxReachableIndex) return false;
-
-        if (maxReachableIndex >= nums.length-1) return true;
-
-        // if we moved nums[i] steps from the current index i, where we will reach ?
-        if (i + nums[i] > maxReachableIndex) maxReachableIndex = i + nums[i];
+    for (let i = 0; i < n; i++) {
+        if (dp[i]) {
+            for (let j = i + 1; j <= i + nums[i] && j < n; j++) {
+                dp[j] = true;
+            }
+        }
     }
-    return true;
-};
+
+    return dp[n - 1];
+}
