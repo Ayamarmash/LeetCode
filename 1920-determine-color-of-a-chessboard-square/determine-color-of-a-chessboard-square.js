@@ -7,6 +7,7 @@ var squareIsWhite = function (coordinates) {
     let map = {
         'a': false, 'b': true, 'c': false, 'd': true, 'e': false, 'f': true, 'g': false, 'h': true
     };
-    if (!map[x]) return map[x] || y % 2 === 0;
-    return map[x] && y % 2 !== 0;
+    let isEvenCoordinate = y % 2 === 0;
+    if (!map[x]) return map[x] || isEvenCoordinate;
+    return map[x] && !isEvenCoordinate;
 };
