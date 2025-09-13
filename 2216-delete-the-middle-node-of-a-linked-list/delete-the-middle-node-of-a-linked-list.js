@@ -16,16 +16,14 @@ var deleteMiddle = function (head) {
         return head;
     }
 
-    let beforeMid = head;
-    let slow = head;
-    let fast = head;
+    let prev = head, slow = head, fast = head;
 
     while (fast?.next) {
-        if(slow !== head) beforeMid = beforeMid.next;
+        prev = slow;
         slow = slow.next;
         fast = fast.next.next;
     }
-    beforeMid.next = slow.next;
+    prev.next = slow.next;
     slow.next = null;
     return head;
 };
