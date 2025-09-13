@@ -10,21 +10,15 @@
  * @return {ListNode}
  */
 var middleNode = function (head) {
-    let length = 0;
     if (!head || !head.next) return head;
-    let ptr = head;
-    while (ptr) {
-        length++;
-        ptr = ptr.next;
-    }
-    ptr = head;
-    let mid = Math.floor(length / 2);
 
-    console.log(mid)
-    while (mid > 0){
-        ptr = ptr.next;
-        mid--;
+    let ptr1 = head;
+    let ptr2 = head;
+
+    while (ptr2?.next) {
+        ptr1 = ptr1.next;
+        ptr2 = ptr2.next.next;
     }
 
-    return ptr;
+    return ptr1;
 };
