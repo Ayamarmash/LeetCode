@@ -12,9 +12,9 @@
  */
 var detectCycle = function (head) {
     let slow = head, fast = head;
-    let linkLen = 0;
+
     if(!head || !head.next) return null;
-    
+
     while (fast?.next) {
         slow = slow.next;
         fast = fast.next.next;
