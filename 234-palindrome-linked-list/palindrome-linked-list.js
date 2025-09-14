@@ -1,44 +1,28 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} head
- * @return {boolean}
- */
 var isPalindrome = function (head) {
+    if (!head || !head.next) return true;
 
+    // 1. Find the middle
     let slow = head, fast = head;
-
-    // slow will be at the middle when fast is in the end (fast moves x2)
-    while (fast?.next) {
+    while (fast && fast.next) {
         slow = slow.next;
-        fast = fast.next.next
-    }
-    console.log(slow.val)
-    // reverse the second half of the linked list
-    let ptr = slow;
-    let current = slow.next
-    if (!current) return slow.val === head.val;
-    ptr.next = null;
-    while (current) {
-        let rest = current.next;
-        current.next = ptr;
-        ptr = current;
-        console.log(current.val)
-        if (!rest) break;
-        current = rest;
+        fast = fast.next.next;
     }
 
-    let first = head;
-    while (current && first) {
-        console.log(current.val, ', ', first.val)
-        if (current.val !== first.val) return false;
-        current = current.next;
-        first = first.next;
+    // 2. Reverse the second half
+    let prev = null, curr = slow;
+    while (curr) {
+        let next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    // 3. Compare the two halves
+    let left = head, right = prev;
+    while (right) { 
+        if (left.val !== right.val) return false;
+        left = left.next;
+        right = right.next;
     }
 
     return true;
