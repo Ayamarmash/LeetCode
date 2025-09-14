@@ -12,13 +12,11 @@
 var middleNode = function (head) {
     if (!head || !head.next) return head;
 
-    let ptr1 = head;
-    let ptr2 = head;
-
-    while (ptr2?.next) {
-        ptr1 = ptr1.next;
-        ptr2 = ptr2.next.next;
+    let slow = head, fast = head;
+    while (fast?.next) {
+        slow = slow.next;
+        fast = fast.next.next;
     }
 
-    return ptr1;
+    return slow;
 };
