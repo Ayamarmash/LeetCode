@@ -2,15 +2,27 @@
  * @param {number} n
  * @return {boolean}
  */
-var isHappy = function (n) {
 
-    if (n === 1) return true;
-    if (n > 1 && n <= 4) return false;
-
+const getNext = (n) => {
+    console.log('now at', n)
     let sum = 0;
-    while (n >= 1) {
-        sum += (n % 10) * (n % 10);
-        n = Math.floor(n / 10);
+    while (n > 0) {
+        let digit = n % 10;
+        sum += digit * digit;
+        n = Math.floor(n / 10)
     }
-    return isHappy(sum);
+    return sum
+}
+var isHappy = function (n) {
+    if (n === 1) return true;
+
+    let slow = n, fast = getNext(n);
+
+    // as long as its not happy and not in a cycle 
+    while (fast !== 1 && fast !== slow) {
+        slow = getNext(slow);
+        fast = getNext(getNext(fast));
+    }
+
+    return fast === 1;
 };
